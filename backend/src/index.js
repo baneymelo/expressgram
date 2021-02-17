@@ -2,12 +2,8 @@
 //import HOST_PORT from '@env'
 import app from "./app";
 import "./database";
-const PORT = 4000
+import config from "./config";
 
-app.listen(PORT, () =>{
-    console.log('Listening port',PORT)
+app.listen(config.PORT, () =>{
+    console.log('Listening port',config.PORT)
 });
-
-app.get('/', (req, res) =>{
-    res.send("Server working")
-})

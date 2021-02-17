@@ -7,5 +7,11 @@ mongoose.connect(config.DB_URI, {
     useFindAndModify: false,
     useCreateIndex: true
 })
-    .then(db => console.log('DB is connected'))
-    .catch(err => console.log(err))
+/*     .then(_ => console.log('DB is connected'))
+    .catch(err => console.log(err)) */
+
+const db = mongoose.connection;
+
+db.on('open', _ => {
+    console.log("Connection open");
+})
