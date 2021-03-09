@@ -1,11 +1,7 @@
 import mongoose, { model, Schema } from 'mongoose'
 
+
 const userSchema = new Schema({
-    username: 
-    {
-        type: String,
-        required: true
-    },
     email:
     {
         type: String,
@@ -14,20 +10,28 @@ const userSchema = new Schema({
         required: true
         
     },
+    fullname: 
+    {
+        type: String,
+        required: true
+    },
+    username: 
+    {
+        type: String,
+        required: true,
+        unique: true
+    },
     password:
     {
         type: String,
         min: 4,
         required: true
     }
-
-
 })
 
+userSchema.statics.encryptPassword = async (psw) => {
+    const salt = await bcrypt.genSalt(10);
+    return await bcrypt.hash(psw, salt)
+}
+
 export default model("User", userSchema);
-
-/* 
-const MyUser = mongoose.model('User', userSchema)
-const user = new MyUser();
-
-*/
