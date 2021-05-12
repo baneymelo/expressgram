@@ -1,5 +1,5 @@
-import mongoose from "mongoose";
-import KEY from "./config";
+const mongoose = require("mongoose");
+const KEY = require("./config");
 
 mongoose.connect(KEY.DB_URI, {
     useNewUrlParser: true,
