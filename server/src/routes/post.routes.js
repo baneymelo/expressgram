@@ -1,10 +1,11 @@
 const { Router } = require('express');
-const { post, profile } = require("../controllers/post.controller");
+const { profile, create, all } = require("../controllers/post.controller");
 const verifyToken = require("../middlewares/verifyToken");
 
 const router = Router();
 
-router.post('/post', verifyToken, post)
-router.get('/post/:username', profile)
+router.post('/create', verifyToken, create )
+router.get('/all', all )
+router.get('/:username', profile )
 
 module.exports = router;

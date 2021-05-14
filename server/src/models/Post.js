@@ -1,12 +1,15 @@
-const { model, Schema } = require('mongoose');
+const { model, Schema } = require("mongoose");
 
-const postSchema = new Schema({
-    postedBy: { type: Schema.ObjectId, ref: 'User'},
+const postSchema = new Schema(
+  {
+    postedBy: { type: Schema.ObjectId, ref: "User" },
     caption: { type: String },
-    posts: [{ uri: String }]
-    
-}, {timestamps: true})
+    media: [{ uri: String }],
+  },
+  { timestamps: true },
+  { versionKey: false }
+);
 
-const Post = model('Post', postSchema);
+const Post = model("Post", postSchema);
 
 module.exports = Post;
